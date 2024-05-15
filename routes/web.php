@@ -28,6 +28,7 @@ Route::get('/', function () {
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/dashboard', [Controller::class, 'dashboard'])->name('dashboard');
+Route::get('/navbar', [Controller::class, 'navbar'])->name('navbar');
 
 
 Route::middleware('auth')->group(function () {
@@ -37,6 +38,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/databarang', [DataBarangController::class, 'databarang'])->name('databarang');
+Route::get('/databarangadd', [DataBarangController::class, 'store'])->name('databarangadd');
 Route::get('/datapemakaian', [DataPemakaianController::class, 'datapemakaian'])->name('datapemakaian');
 Route::get('/datapembelian', [DataPembelianController::class, 'datapembelian'])->name('datapembelian');
 Route::get('/inventaris', [InventarisController::class, 'inventaris'])->name('inventaris');

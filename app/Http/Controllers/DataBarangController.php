@@ -17,4 +17,11 @@ class DataBarangController extends Controller
 
         ]);
     }
+
+    public function store(Request $request)
+    {
+
+
+
+    }
 }

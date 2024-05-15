@@ -68,7 +68,10 @@
         <div class="navbar-custom">
             @include('partials.navbar')
         </div>
-        <h3 class="m-3">Data Pembelian</h3>
+        <div class="d-flex">
+            <h3>Data Pembelian</h3>
+            <a href="" class="py-1 px-3 text-center align-items-center d-flex rounded text-decoration-none button ms-auto"><i class="fa-solid fa-user-plus me-2"></i>Tambah Data Pembelian</a>
+          </div>
         <main class="content px-3 py-2">
             <div class="container-fluid">
                 <!-- Table Element -->

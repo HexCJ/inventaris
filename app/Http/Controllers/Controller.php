@@ -25,4 +25,14 @@ class Controller extends BaseController
             'user' => $user,
         ]);
     }
+
+    public function navbar()
+    {
+        $username = Auth::user()->username;
+        $user = User::where('username', $username)->first();
+        return view('/navbar', [
+            'user' => $user
+        ]);
+
+    }
 }

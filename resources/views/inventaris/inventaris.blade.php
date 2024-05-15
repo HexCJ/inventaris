@@ -186,8 +186,11 @@
         <div class="navbar-custom">
             @include('partials.navbar')
         </div>
-        <h3 class="m-3">Data Inventaris</h3>
-        <main class="content px-3 py-2">
+        <div class="d-flex">
+            <h3>Data Inventaris</h3>
+            <a href="" class="py-1 px-3 text-center align-items-center d-flex rounded text-decoration-none button ms-auto"><i class="fa-solid fa-user-plus me-2"></i>Tambah Inventaris</a>
+          </div>          
+          <main class="content px-3 py-2">
             <div class="container-fluid">
                 <!-- Table Element -->
                 <div class="card border-0">

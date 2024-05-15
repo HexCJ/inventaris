@@ -6,12 +6,11 @@
         <ul class="navbar-nav">
             <li class="nav-item dropdown">
                 <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                    @if($user->jenis_kelamin === 'Laki-laki')
+                    {{-- @if($user->jenis_kelamin === 'Laki-laki') --}}
                     <img src="image/profile.jpg" class="avatar img-fluid rounded" alt="">
-                    
-                    @elseif($user->jenis_kelamin === 'Perempuan')
+                    {{-- @elseif($user->jenis_kelamin === 'Perempuan')
                     <img src="image/girl.jpeg" class="avatar img-fluid rounded" alt="">
-                    @endif
+                    @endif --}}
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
                     <a href="#" class="dropdown-item">Profile</a>
