@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('data_pemakaian', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_barang');
+            $table->string('kode_barang');
             $table->integer('jumlah_pakai');
-            $table->string('tanggal_pakai');
+            $table->date('tanggal_pemakaian');
             $table->string('pemakaian');
             $table->string('keterangan');
             $table->timestamps();

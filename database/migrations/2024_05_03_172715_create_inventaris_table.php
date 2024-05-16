@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('kode_barang')->unique();
             $table->string('jenis_barang');
             $table->integer('jumlah');
-            $table->string('tanggal_pembelian');
-            $table->string('tanggal_pemakaian');
+            $table->date('tanggal_pembelian');
+            $table->date('tanggal_pemakaian');
             $table->string('penggunaan');
             $table->string('ruang');
             $table->string('keterangan');

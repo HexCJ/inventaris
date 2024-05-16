@@ -1,4 +1,4 @@
-<aside id="sidebar" class="js-sidebar">
+<aside id="sidebar" class="js-sidebar ">
     <!-- Content For Sidebar -->
     <div class="h-100">
         <div class="sidebar-logo">
@@ -10,26 +10,36 @@
             </li>
             <li class="sidebar-item">
                 <a href="{{ route('dashboard') }}" class="sidebar-link">
-                    <i class="fa-solid fa-list pe-2"></i>
+                    <i class="fa fa-home pe-2" aria-hidden="true"></i>
                     Dashboard
+                </a>
+            </li>
+            @if (auth()->user()->hasRole('Administrator'))
+            <li class="sidebar-item">
+                <a href="{{ route('user') }}" class="sidebar-link">
+                    <i class="fa fa-user-o pe-2" aria-hidden="true"></i>
+                    Data User
                 </a>
             </li>
             <li class="sidebar-item">
                 <a href="{{ route('databarang') }}" class="sidebar-link">
-                    <i class="fa-solid fa-list pe-2"></i>
+                    <i class="fa fa-archive pe-2" aria-hidden="true"></i>
                     Data Barang
                 </a>
             </li>
+            @endif
+            @if (auth()->user()->hasRole('Administrator') || auth()->user()->hasRole('Operator') || auth()->user()->hasRole('Petugas') ) 
             <li class="sidebar-item">
                 <a href="{{ route('datapembelian') }}" class="sidebar-link">
-                    <i class="fa-solid fa-list pe-2"></i>
+                    <i class="fa fa-cart-arrow-down pe-2" aria-hidden="true"></i>
                     Data Pembelian
                 </a>
             </li>
+            @endif
             @if (auth()->user()->hasRole('Administrator') || auth()->user()->hasRole('Operator') )
             <li class="sidebar-item">
                 <a href="{{ route('datapemakaian') }}" class="sidebar-link">
-                    <i class="fa-solid fa-list pe-2"></i>
+                    <i class="fa fa-list-alt pe-2" aria-hidden="true"></i>
                     Data Pemakaian
                 </a>
             </li>

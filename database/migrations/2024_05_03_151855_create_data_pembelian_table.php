@@ -14,8 +14,11 @@ return new class extends Migration
         Schema::create('data_pembelian', function (Blueprint $table) {
             $table->id();
             $table->string('nama_barang');
+            $table->string('kode_barang');
+            $table->string('jenis_barang');
             $table->string('merk');
             $table->integer('jumlah');
+            $table->date('tanggal_pembelian');
             $table->integer('harga');
             $table->integer('total');
             $table->timestamps();

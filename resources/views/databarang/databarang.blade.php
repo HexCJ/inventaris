@@ -68,7 +68,7 @@
             @include('partials.navbar')
         </div>
         <div class="d-flex">
-            <h3>Data Barang</h3>
+            <h3 class="m-3">Data Barang</h3>
             <a href="{{route ('databarangadd')}}" class="py-1 px-3 text-center align-items-center d-flex rounded text-decoration-none button ms-auto"><i class="fa-solid fa-user-plus me-2"></i>Tambah Barang</a>
           </div>        
           <main class="content px-3 py-2">

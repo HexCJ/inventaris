@@ -1,65 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-{{-- <div class="relative overflow-x-auto shadow-md ml-60">
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-            <tr>
-                <th scope="col" class="px-6 py-3">
-                    No
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Nama Barang
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Merk/Type
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Jumlah
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Harga
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Total
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Aksi
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-
-            @foreach($data as $d)
-            <tr class="bg-white border-b">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    {{$loop->iteration}}
-                </th>
-                <td class="px-6 py-4">
-                    {{$d->nama_barang}}
-                </td>
-                <td class="px-6 py-4">
-                    {{$d->merk}}
-                </td>
-                <td class="px-6 py-4">
-                    {{$d->jumlah}}
-                </td>
-                <td class="px-6 py-4">
-                    {{$d->harga}}
-                </td>
-                <td class="px-6 py-4">
-                    {{$d->total}}
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
-                </td>
-            </tr>
-            @endforeach
-
-        </tbody>
-    </table>
-</div> --}}
-
 <div class="wrapper">
     <div class="sidebar">
         @include('partials.sidebar')
@@ -69,10 +10,10 @@
             @include('partials.navbar')
         </div>
         <div class="d-flex">
-            <h3 class="m-3">Data Pembelian</h3>
-            <a href="{{route ('datapembelianadd')}}" class="py-1 px-3 text-center align-items-center d-flex rounded text-decoration-none button ms-auto"><i class="fa fa-cart-plus me-2" aria-hidden="true"></i>Tambah Data Pembelian</a>
-          </div> 
-        <main class="content px-3 py-2">
+            <h3 class="m-3">Data User</h3>
+            <a href="{{route ('useradd')}}" class="py-1 px-3 text-center align-items-center d-flex rounded text-decoration-none button ms-auto"><i class="fa-solid fa-user-plus me-2"></i>Tambah User</a>
+          </div>        
+          <main class="content px-3 py-2">
             <div class="container-fluid">
                 <!-- Table Element -->
                 <div class="card border-0">
@@ -84,28 +25,19 @@
                                         No
                                     </th>
                                     <th scope="col">
-                                        Nama Barang
+                                        Nama
                                     </th>
                                     <th scope="col">
-                                        Kode Barang
+                                        Username
                                     </th>
                                     <th scope="col">
-                                        Jenis Barang
+                                        Gender
                                     </th>
                                     <th scope="col">
-                                        Merk/Type
+                                        Email
                                     </th>
                                     <th scope="col">
-                                        Jumlah
-                                    </th>
-                                    <th scope="col">
-                                        Tanggal Pembelian
-                                    </th>
-                                    <th scope="col">
-                                        Harga
-                                    </th>
-                                    <th scope="col">
-                                        Total
+                                        Role
                                     </th>
                                     <th scope="col">
                                         Aksi
@@ -116,32 +48,23 @@
                             <tbody>
                                 @foreach($data as $d)
                                 <tr>
-                                    <th>
+                                    <th scope="row">
                                         {{$loop->iteration}}
                                     </th>
                                     <td>
-                                        {{$d->nama_barang}}
+                                        {{$d->name}}
                                     </td>
                                     <td>
-                                        {{$d->kode_barang}}
+                                        {{$d->username}}
                                     </td>
                                     <td>
-                                        {{$d->jenis_barang}}
+                                        {{$d->jenis_kelamin}}
                                     </td>
                                     <td>
-                                        {{$d->merk}}
+                                        {{$d->email}}
                                     </td>
                                     <td>
-                                        {{$d->jumlah}}
-                                    </td>
-                                    <td>
-                                        {{$d->tanggal_pembelian}}
-                                    </td>
-                                    <td>
-                                        {{$d->harga}}
-                                    </td>
-                                    <td>
-                                        {{$d->total}}
+                                        {{$d->role}}
                                     </td>
                                     <td class="d-flex justify-content-center align-items-center">
                                         <div class="dropdown py-3">
@@ -149,10 +72,10 @@
                                             <i class="bi bi-person-fill-gear me-2 i-icon"></i>Option
                                           </a>
                                           <ul class="dropdown-menu">
-                                            <li><a href="{{ route('datapembelianedit',['id' => $d->id]) }}" class="dropdown-item" href="#"><i class="bi bi-person-fill-gear me-2 i-icon"></i>Edit</a></li>
+                                            <li><a href="{{ route('useredit',['id' => $d->id]) }}" class="dropdown-item" href="#"><i class="bi bi-person-fill-gear me-2 i-icon"></i>Edit</a></li>
                                             <li>
-                                              <form id="hapus-datapembelian-{{ $d->id }}" action="{{ route('datapembelianhapus', $d->id) }}" method="POST">
-                                                <button type="button" id="btnHapusdatapembelian{{ $d->id }}" class="dropdown-item text-danger">
+                                              <form id="hapus-users-{{ $d->id }}" action="{{ route('userhapus', $d->id) }}" method="POST">
+                                                <button type="button" id="btnHapusUsers{{ $d->id }}" class="dropdown-item text-danger">
                                                   <i class="bi bi-person-fill-dash me-2 i-icon"></i>Hapus
                                                 </button>
                                                 @csrf
@@ -160,7 +83,7 @@
                                               </form>
                                               <script>
                                                 document.addEventListener('DOMContentLoaded', function() {
-                                                    document.getElementById('btnHapusdatapembelian{{ $d->id }}').addEventListener('click', function() {
+                                                    document.getElementById('btnHapusUsers{{ $d->id }}').addEventListener('click', function() {
                                                         Swal.fire({
                                                             title: 'Apakah Anda yakin menghapus {{ $d->name}} ?',
                                                             text: "Data yang dihapus tidak dapat dikembalikan!",
@@ -174,7 +97,7 @@
                                                             cancelButtonText: 'Batal'
                                                         }).then((result) => {
                                                             if (result.isConfirmed) {
-                                                                document.getElementById('hapus-datapembelian-{{ $d->id }}').submit();
+                                                                document.getElementById('hapus-users-{{ $d->id }}').submit();
                                                             }
                                                         });
                                                     });
@@ -183,8 +106,7 @@
                                             </li>
                                           </ul>
                                         </div>
-                                    </td>
-                                </tr>
+                                      </td>
                                 </tr>
                                 @endforeach
                     

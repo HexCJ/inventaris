@@ -13,9 +13,14 @@ class DataPembelian extends Model
 
     protected $fillable = [
         'nama_barang',
+        'kode_barang',
+        'jenis_barang',
         'merk',
+        'tanggal_pembelian',
         'jumlah',
         'harga',
         'total',
     ];
+
+
 }

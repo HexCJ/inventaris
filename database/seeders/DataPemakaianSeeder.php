@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\DataPemakaian;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
+
 
 class DataPemakaianSeeder extends Seeder
 {
@@ -14,17 +16,19 @@ class DataPemakaianSeeder extends Seeder
     public function run(): void
     {
         $seed1 = DataPemakaian::updateOrCreate([
-            'nama_barang' => 'Mesin Bor',
+            // 'nama_barang' => 'Mesin Bor',
+            'kode_barang' => 'K001',
             'jumlah_pakai' => '2',
-            'tanggal_pakai' => '2024-03-20',
+            'tanggal_pemakaian' => Carbon::create(2024, 3, 20),
             'pemakaian' => 'membor tembok',
             'keterangan' => 'digunakan',
 
         ]);
         $seed2 = DataPemakaian::updateOrCreate([
-            'nama_barang' => 'Mesin Las',
+            // 'nama_barang' => 'Mesin Las',
+            'kode_barang' => 'K002',
             'jumlah_pakai' => '2',
-            'tanggal_pakai' => '2024-04-20',
+            'tanggal_pemakaian' => Carbon::create(2024, 3, 20),
             'pemakaian' => 'mengelas besi',
             'keterangan' => 'tersisah',
 

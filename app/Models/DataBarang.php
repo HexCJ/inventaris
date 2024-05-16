@@ -18,4 +18,6 @@ class DataBarang extends Model
         'jumlah',
         'harga',
     ];
+
+    
 }

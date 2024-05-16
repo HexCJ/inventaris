@@ -12,10 +12,11 @@ class DataPemakaian extends Model
     protected $table = 'data_pemakaian';
 
     protected $fillable = [
-        'nama_barang',
+        'kode_barang',
         'jumlah_pakai',
-        'tanggal_pakai',
+        'tanggal_pemakaian',
         'pemakaian',
         'keterangan',
     ];
+    
 }
