@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataBarang;
+use App\Models\DataPemakaian;
+use App\Models\DataPembelian;
 use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -16,6 +19,10 @@ class Controller extends BaseController
     {
         $role = Auth::user()->role;
         $username = Auth::user()->username;
+        $databarangall = DataBarang::count();
+        $datauserall = User::count();
+        $datapembelianall = DataPembelian::count();
+        $datapemakaianall = DataPemakaian::count();
         $name = Auth::user()->name;
         $user = User::where('username', $username)->first();
         return view('/dashboard', [
@@ -23,6 +30,10 @@ class Controller extends BaseController
             'username' => $username,
             'name' => $name,
             'user' => $user,
+            'databarangall' => $databarangall,
+            'datauserall' => $datauserall,
+            'datapembelianall' => $datapembelianall,
+            'datapemakaianall' => $datapemakaianall,
         ]);
     }
 

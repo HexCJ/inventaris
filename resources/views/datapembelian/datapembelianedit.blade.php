@@ -30,7 +30,7 @@
                 <div class="row" data-aos="fade-up">
                     <div class="mb-3 col-md-6">
                         <label for="kode_barang" class="form-label">Kode Barang</label>
-                        <input type="text" class="form-control" id="kode_barang" name="kode_barang" value="{{$data->kode_barang}}" required>
+                        <input type="text" class="form-control" id="kode_barang" name="kode_barang" value="{{$data->kode_barang}}" required disabled>
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="jenis_barang" class="form-label">Jenis Barang</label>

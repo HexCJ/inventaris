@@ -29,8 +29,17 @@
                 <div class="row" data-aos="fade-up">
                     <div class="mb-3 col-md-6">
                         <label for="kode_barang" class="form-label">Kode Barang</label>
-                        <input type="text" class="form-control" id="kode_barang" name="kode_barang" required>
+                        <div class="input-group">
+                            <select class="form-select" id="kode_barang" name="kode_barang" required>
+                          <option value="">Pilih Kode barang</option>
+                          @foreach($barangs as $barang)
+                              <option value="{{ $barang->kode_barang }}">{{ $barang->kode_barang }}</option>
+                          @endforeach
+                            </select>
+                            <input type="text" class="form-control" id="kode_barang_input" name="kode_barang" placeholder="Masukkan yang lain" aria-label="Masukkan yang lain" disabled>
+                        </div>
                     </div>
+
                     <div class="mb-3 col-md-6">
                         <label for="jenis_barang" class="form-label">Jenis Barang</label>
                         <input type="text" class="form-control" id="jenis_barang" name="jenis_barang" required>
@@ -56,3 +65,28 @@
         </main>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    const kode_barangSelect = document.getElementById('kode_barang');
+    const kode_barangInput = document.getElementById('kode_barang_input');
+
+    kode_barangSelect.addEventListener('change', function() {
+        if (this.value === "") {
+            kode_barangInput.disabled = false;
+        } else {
+            kode_barangInput.disabled = true;
+        }
+    });
+
+    kode_barangInput.addEventListener('input', function() {
+        if (this.value.length > 0) {
+            kode_barangSelect.disabled = true;
+        } else {
+            kode_barangSelect.disabled = false;
+        }
+    });
+});
+</script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>

@@ -19,7 +19,9 @@ class DataPembelianController extends Controller
 
     public function create(Request $request)
     {
+        $barangs = DataBarang::all();
         return view('datapembelian/datapembelianadd',[
+            'barangs' => $barangs,
         ]);
     }
 
@@ -80,9 +82,11 @@ class DataPembelianController extends Controller
 
     public function edit(string $id)
     {
+        $barangs = DataBarang::all();
         $data = DataPembelian::findOrFail($id);
         return view('datapembelian/datapembelianedit',[
             'data' => $data,
+            'barangs' => $barangs,
         ]);
     }
 
@@ -94,8 +98,8 @@ class DataPembelianController extends Controller
         if($validator->fails()) {
             return redirect()->back()->withInput()->withErrors($validator);
         }
-
         $data = DataPembelian::find($id);
+        $jumlahLama = $data->jumlah;
         $data->nama_barang       = $request->nama_barang;
         $data->kode_barang       = $request->kode_barang;
         $data->jenis_barang      = $request->jenis_barang;
@@ -109,11 +113,19 @@ class DataPembelianController extends Controller
 
             $databarang = DataBarang::where('kode_barang', $request->kode_barang)->first();
             if ($databarang) {
+
+                // if($databarang->jumlah >= $data->jumlah){
+
+                // }else if($databarang->jumlah >= $data->jumlah){
+
+                // }
+                $selisihJumlah = $request->jumlah - $jumlahLama;
                 $databarang->nama_barang = $data->nama_barang;
                 $databarang->jenis_barang = $data->jenis_barang;
                 $databarang->harga = $data->harga;
                 // Jika jumlah barang bisa berubah
-                $databarang->jumlah += $data->jumlah; // Perbarui jumlah dengan selisih jumlah baru dan lama
+                // $databarang->jumlah += $data->jumlah; // Perbarui jumlah dengan selisih jumlah baru dan lama
+                     $databarang->jumlah += $selisihJumlah;
                 $databarang->save();
             }
 

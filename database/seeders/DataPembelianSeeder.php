@@ -23,7 +23,7 @@ class DataPembelianSeeder extends Seeder
             'tanggal_pembelian' => Carbon::create(2024, 3, 12),
             'jumlah' => '10',
             'harga' => '120000',
-            'total' => '120000'
+            'total' => '1200000'
 
         ]);
         $seed2 = DataPembelian::updateOrCreate([
