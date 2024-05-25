@@ -30,9 +30,9 @@ class RuangController extends Controller
         
         // create
         if($ruang = Ruang::create($data)){
-            return redirect()->route('ruang')->with('success', 'Data Pembelian berhasil ditambahkan');
+            return redirect()->route('ruang')->with('success', 'Data Ruang berhasil ditambahkan');
         }else{
-            return redirect()->route('ruang')->with('fail', 'Data Pembelian gagal ditambahkan');
+            return redirect()->route('ruang')->with('fail', 'Data Ruang gagal ditambahkan');
         }
     }
 
@@ -52,13 +52,13 @@ class RuangController extends Controller
             if($datapemakaian){
                 $datapemakaian->ruang = $data->nama_ruang; 
                 $datapemakaian->save();
-                return redirect()->route('ruang')->with('success-update', 'Data Pembelian berhasil diedit');        
+                return redirect()->route('ruang')->with('success-update', 'Data Ruang berhasil diedit');        
             }
             
-            return redirect()->route('ruang')->with('success-update', 'Data Pembelian berhasil diedit');        
+            return redirect()->route('ruang')->with('success-update', 'Data Ruang berhasil diedit');        
         }
         else{
-            return redirect()->route('ruang')->with('fail', 'Data Pembelian gagal diedit');
+            return redirect()->route('ruang')->with('fail', 'Data Ruang gagal diedit');
         }
     }
 
@@ -73,9 +73,9 @@ class RuangController extends Controller
         $nama_ruang = $data->nama_ruang;
 
         if($data->delete()){
-            return redirect()->back()->with('success-delete', 'Data Pembelian '.$nama_ruang.' berhasil dihapus');
+            return redirect()->back()->with('success-delete', 'Data Ruang '.$nama_ruang.' berhasil dihapus');
         }else{
-            return redirect()->back()->with('fail', 'Data Pembelian gagal '.$nama_ruang.' dihapus');
+            return redirect()->back()->with('fail', 'Data Ruang gagal '.$nama_ruang.' dihapus');
         }
     }
 

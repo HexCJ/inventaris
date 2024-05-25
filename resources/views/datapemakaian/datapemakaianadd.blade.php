@@ -46,7 +46,7 @@
                             <option selected disabled>Pilih Nama Pemakai</option>
                             @foreach($users as $user)
                                 <option value="{{ $user->name }}">{{ $user->name }}</option>
-                            @endforeachd
+                            @endforeach
                           </select>
                     </div>
                 </div>

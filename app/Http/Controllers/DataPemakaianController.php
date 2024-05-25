@@ -183,7 +183,7 @@ class DataPemakaianController extends Controller
         $databar = DataBarang::where('kode_barang', $kodebar)->first();
         $databar->jumlah += $jumlahpem;
         $databar->save();
-        $kode_barang = $data->id;
+        $kode_barang = $data->kode_barang;
 
         if($data->delete()){
             return redirect()->back()->with('success-delete', 'Data Pembelian '.$kode_barang.' berhasil dihapus');

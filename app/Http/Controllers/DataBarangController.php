@@ -37,7 +37,7 @@ class DataBarangController extends Controller
     {
         //
         $data = DataBarang::findOrFail($id);
-        $nama_barang = $data->id;
+        $nama_barang = $data->nama_barang;
         $kodebar =  $data->kode_barang;
         $pembelian = DataPembelian::where('kode_barang', $kodebar)->first();
         $pemakaian = DataPemakaian::where('kode_barang', $kodebar)->first();
