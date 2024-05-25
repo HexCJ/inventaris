@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ExportMulti;
 use App\Models\DataBarang;
 use App\Models\DataPemakaian;
 use App\Models\DataPembelian;
@@ -10,6 +11,8 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class Controller extends BaseController
 {
@@ -45,5 +48,9 @@ class Controller extends BaseController
             'user' => $user
         ]);
 
+    }
+
+    public function export(){
+        return Excel::download(new ExportMulti, "Laporan.xlsx");
     }
 }

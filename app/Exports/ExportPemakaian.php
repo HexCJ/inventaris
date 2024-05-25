@@ -7,9 +7,9 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithTitle;
 
-
-class ExportPemakaian implements FromCollection, WithHeadings, WithStyles
+class ExportPemakaian implements FromCollection, WithHeadings, WithStyles, WithTitle
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -19,6 +19,12 @@ class ExportPemakaian implements FromCollection, WithHeadings, WithStyles
         $data =  DataPemakaian::select('kode_barang', 'jumlah_pakai', 'tanggal_pemakaian', 'pemakai', 'ruang', 'keterangan')->orderBy('kode_barang', 'asc')->get();
         return $data;
     }
+
+    public function title(): string
+    {
+        return 'Data Pemakaian';
+    }
+
     public function headings(): array
     {
         return [

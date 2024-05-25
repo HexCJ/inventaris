@@ -87,6 +87,7 @@ Route::get('/databarang/exportexcel', [DataBarangController::class, 'export'])->
 Route::get('/datapembelian/exportexcel', [DataPembelianController::class, 'export'])->name('datapembelianexport');
 Route::get('/datapemakaian/exportexcel', [DataPemakaianController::class, 'export'])->name('datapemakaianexport');
 Route::get('/ruang/exportexcel', [RuangController::class, 'export'])->name('ruangexport');
+Route::get('/multi/exportexcel', [Controller::class, 'export'])->name('multiexport');
 Route::get('/inventaris/exportexcel', [InventarisController::class, 'export'])->name('inventarisexport');
 
 

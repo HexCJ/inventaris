@@ -7,9 +7,9 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithTitle;
 
-
-class ExportUser implements FromCollection, WithHeadings, WithStyles
+class ExportUser implements FromCollection, WithHeadings, WithStyles, WithTitle
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -18,6 +18,11 @@ class ExportUser implements FromCollection, WithHeadings, WithStyles
     {
         $data =  User::select('name', 'username', 'jenis_kelamin', 'email', 'role',)->orderBy('name', 'asc')->get();
         return $data;
+    }
+
+    public function title(): string
+    {
+        return 'Data User';
     }
 
     public function headings(): array

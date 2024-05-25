@@ -62,6 +62,8 @@
                                         @if (auth()->user()->hasRole('Administrator'))
                                         <h4 class="mb-3 d-flex justify-content-center">Download Export Data</h4>
                                         <div class="d-flex justify-content-center">
+                                        <a  class="mb-3 mt-1 btn me-3 btn-primary" style="height: 30px; width: 120px;" href="{{route ('multiexport')}}">Laporan</a>
+                                        {{-- <div class="d-flex justify-content-center">
                                         <a  class="mb-3 mt-1 btn me-3 btn-primary" style="height: 30px; width: 120px;" href="{{route ('userexport')}}">User</a>
                                         <a  class="mb-3 mt-1 btn me-3 btn-primary" style="height: 30px; width: 120px;" href="{{route ('databarangexport')}}">Barang</a>
                                         <a  class="mb-3 mt-1 btn btn-primary" style="height: 30px;  width: 120px;" href="{{route ('ruangexport')}}">Ruang</a>
@@ -70,6 +72,32 @@
                                         <a  class="mb-3 mt-1 btn me-3 btn-primary" style="height: 30px;  width: 120px;" href="{{route ('datapembelianexport')}}"> Pembelian</a>
                                         <a  class="mb-3 mt-1 btn me-3 btn-primary" style="height: 30px; width: 120px;" href="{{route ('datapemakaianexport')}}">Pemakaian</a>
                                         <a  class="mb-3 mt-1 btn btn-primary" style="height: 30px; width: 120px;" href="{{route ('inventarisexport')}}">Inventaris</a>
+                                        </div> --}}
+                                        <div class="dropdown text-center">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                              Download salah satu
+                                            </button>
+                                            <ul class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton1">
+                                              <li>
+                                                <a  class="mb-2 mt-1 btn me-3 btn-primary" style="height: 30px; width: 120px;" href="{{route ('userexport')}}">User</a>
+                                              </li>
+                                              <li>
+                                                <a  class="mb-2 mt-1 btn me-3 btn-primary" style="height: 30px; width: 120px;" href="{{route ('databarangexport')}}">Barang</a>
+                                              </li>
+                                              <li>
+                                                <a  class="mb-2 mt-1 btn me-3  btn-primary" style="height: 30px;  width: 120px;" href="{{route ('ruangexport')}}">Ruang</a>
+                                              </li>
+                                              <li>
+                                                <a  class="mb-2 mt-1 btn me-3 btn-primary" style="height: 30px;  width: 120px;" href="{{route ('datapembelianexport')}}"> Pembelian</a>
+                                              </li>
+                                              <li>
+                                                <a  class="mb-2 mt-1 btn me-3 btn-primary" style="height: 30px; width: 120px;" href="{{route ('datapemakaianexport')}}">Pemakaian</a>
+                                              </li>
+                                              {{-- <li>
+                                                <a  class="mb-3 mt-1 btn btn-primary" style="height: 30px; width: 120px;" href="{{route ('inventarisexport')}}">Inventaris</a>
+                                              </li> --}}
+                                            </ul>
+                                          </div>
                                         </div>
                                         @endif
                                     </div>

@@ -50,7 +50,7 @@
                                     <td class="d-flex justify-content-center align-items-center">
                                         <div class="dropdown py-3">
                                           <a class="button py-2 px-3 rounded text-decoration-none text-center dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="bi bi-person-fill-gear me-2 i-icon"></i>Option
+                                            <i class="bi bi-gear me-2 i-icon"></i>Option
                                           </a>
                                           <ul class="dropdown-menu text-center">
                                             {{-- <li><a href="{{ route('datapembelianedit',['id' => $d->id]) }}" class="dropdown-item" href="#"><i class="bi bi-person-fill-gear me-2 i-icon"></i>Edit</a></li> --}}

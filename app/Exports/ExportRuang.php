@@ -7,8 +7,9 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithTitle;
 
-class ExportRuang implements FromCollection, WithHeadings, WithStyles
+class ExportRuang implements FromCollection, WithHeadings, WithStyles, WithTitle
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -18,6 +19,12 @@ class ExportRuang implements FromCollection, WithHeadings, WithStyles
         $data =  Ruang::select('nama_ruang')->orderBy('nama_ruang', 'asc')->get();
         return $data;
     }
+
+    public function title(): string
+    {
+        return 'Data Ruang';
+    }
+
     public function headings(): array
     {
         return [
