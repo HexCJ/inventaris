@@ -112,15 +112,15 @@ class UserController extends Controller
 
             if($data->role === 'Administrator')
             { 
-                $data->assignRole('Administrator');
+                $data->syncRoles('Administrator');
                 return redirect()->route('user')->with('success-update', 'Data Siswa berhasil diedit');
             }
             else if ($data->role === 'Operator'){
-                $data->assignRole('Administrator');
+                $data->syncRoles('Administrator');
                 return redirect()->route('user')->with('success-update', 'Data Guru berhasil diedit');            
             }
             else if ($data->role === 'Petugas'){
-                $data->assignRole('Administrator');
+                $data->syncRoles('Administrator');
                 return redirect()->route('users')->with('success-update', 'Data Admin berhasil diedit');        
             }
         }
