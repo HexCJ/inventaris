@@ -17,7 +17,7 @@ class UserController extends Controller
 {
     public function viewuser(Request $request)
     {
-        $data = User::all();
+        $data = User::paginate(5);
         return view('user/user',compact('data'),[
             'data' => $data,
 

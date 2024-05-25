@@ -62,12 +62,14 @@
                                         @if (auth()->user()->hasRole('Administrator'))
                                         <h4 class="mb-3 d-flex justify-content-center">Download Export Data</h4>
                                         <div class="d-flex justify-content-center">
-                                        <a  class="mb-3 mt-1 btn me-3 btn-primary" style="height: 30px; width: 180px;" href="{{route ('userexport')}}">Data User</a>
-                                        <a  class="mb-3 mt-1 btn btn-primary" style="height: 30px; width: 180px;" href="{{route ('databarangexport')}}">Data Barang</a>
+                                        <a  class="mb-3 mt-1 btn me-3 btn-primary" style="height: 30px; width: 120px;" href="{{route ('userexport')}}">User</a>
+                                        <a  class="mb-3 mt-1 btn me-3 btn-primary" style="height: 30px; width: 120px;" href="{{route ('databarangexport')}}">Barang</a>
+                                        <a  class="mb-3 mt-1 btn btn-primary" style="height: 30px;  width: 120px;" href="{{route ('ruangexport')}}">Ruang</a>
                                         </div>
                                         <div class="d-flex justify-content-center">
-                                        <a  class="mb-3 mt-1 btn me-3 btn-primary" style="height: 30px;  width: 180px;" href="{{route ('datapembelianexport')}}"> Data Pembelian</a>
-                                        <a  class="mb-3 mt-1 btn btn-primary" style="height: 30px; width: 180px;" href="{{route ('datapemakaianexport')}}">Data Pemakaian</a>
+                                        <a  class="mb-3 mt-1 btn me-3 btn-primary" style="height: 30px;  width: 120px;" href="{{route ('datapembelianexport')}}"> Pembelian</a>
+                                        <a  class="mb-3 mt-1 btn me-3 btn-primary" style="height: 30px; width: 120px;" href="{{route ('datapemakaianexport')}}">Pemakaian</a>
+                                        <a  class="mb-3 mt-1 btn btn-primary" style="height: 30px; width: 120px;" href="{{route ('inventarisexport')}}">Inventaris</a>
                                         </div>
                                         @endif
                                     </div>

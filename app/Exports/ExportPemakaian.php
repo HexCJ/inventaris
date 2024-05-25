@@ -16,7 +16,7 @@ class ExportPemakaian implements FromCollection, WithHeadings, WithStyles
     */
     public function collection()
     {
-        $data =  DataPemakaian::select('kode_barang', 'jumlah_pakai', 'tanggal_pemakaian', 'pemakaian', 'keterangan')->orderBy('kode_barang', 'asc')->get();
+        $data =  DataPemakaian::select('kode_barang', 'jumlah_pakai', 'tanggal_pemakaian', 'pemakai', 'ruang', 'keterangan')->orderBy('kode_barang', 'asc')->get();
         return $data;
     }
     public function headings(): array
@@ -25,16 +25,17 @@ class ExportPemakaian implements FromCollection, WithHeadings, WithStyles
             'Kode Barang',
             'Jumlah Pemakaian',
             'Tanggal Pemakaian',
-            'Pemakaian',
+            'Pemakai',
+            'Ruang',
             'Keterangan',
         ];
     }
     public function styles(Worksheet $sheet)
     {
-        $sheet->getStyle('A1:H1')->getFont()->setBold(true);
-        $sheet->getStyle('A:H')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle('A1:I1')->getFont()->setBold(true);
+        $sheet->getStyle('A:I')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
         // size sesuai value
-        foreach (range('A', 'H') as $columnID) {
+        foreach (range('A', 'I') as $columnID) {
             $sheet->getColumnDimension($columnID)->setAutoSize(true);
     }
 }

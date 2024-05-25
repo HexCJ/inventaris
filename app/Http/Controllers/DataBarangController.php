@@ -16,7 +16,7 @@ class DataBarangController extends Controller
     public function databarang(Request $request)
     {
         $role = Auth::user()->role;
-        $data = DataBarang::all();
+        $data = DataBarang::paginate(5);
         return view('databarang/databarang',compact('data'),[
             'role' => $role,
 

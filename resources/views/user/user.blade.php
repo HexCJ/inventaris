@@ -75,7 +75,7 @@
                                             <i class="bi bi-person-fill-gear me-2 i-icon"></i>Option
                                           </a>
                                           <ul class="dropdown-menu">
-                                            <li><a href="{{ route('useredit',['id' => $d->id]) }}" class="dropdown-item" href="#"><i class="bi bi-person-fill-gear me-2 i-icon"></i>Edit</a></li>
+                                            <li><a href="{{ route('useredit',['id' => $d->id]) }}" class="dropdown-item" href="#"><i class="bi bi-pencil me-2 i-icon"></i>Edit</a></li>
                                             <li>
                                               <form id="hapus-users-{{ $d->id }}" action="{{ route('userhapus', $d->id) }}" method="POST">
                                                 <button type="button" id="btnHapusUsers{{ $d->id }}" class="dropdown-item text-danger">
@@ -112,9 +112,9 @@
                                       </td>
                                 </tr>
                                 @endforeach
-                    
                             </tbody>
                         </table>
+                        {{ $data->links() }}
                     </div>
                 </div>
             </div>

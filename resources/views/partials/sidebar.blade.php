@@ -29,7 +29,7 @@
             </li>
             <li class="sidebar-item">
                 <a href="{{ route('ruang') }}" class="sidebar-link">
-                    <i class="fa fa-archive pe-2" aria-hidden="true"></i>
+                    <i class="fa fa-building pe-2" aria-hidden="true"></i>
                     Data Ruang
                 </a>
             </li>

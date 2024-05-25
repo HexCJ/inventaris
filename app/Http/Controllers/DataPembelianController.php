@@ -14,7 +14,7 @@ class DataPembelianController extends Controller
 {
     public function datapembelian(Request $request)
     {
-        $data = DataPembelian::all();
+        $data = DataPembelian::paginate(5);
         return view('datapembelian/datapembelian',compact('data'),[
         ]);
     }
@@ -146,6 +146,11 @@ class DataPembelianController extends Controller
     {
         //
         $data = DataPembelian::findOrFail($id);
+        $jumlahpem = $data->jumlah;
+        $kodebar = $data->kode_barang;
+        $databar = DataBarang::where('kode_barang', $kodebar)->first();
+        $databar->jumlah -= $jumlahpem;
+        $databar->save();
         $nama_barang = $data->id;
 
         if($data->delete()){

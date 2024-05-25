@@ -19,7 +19,7 @@ class DataPemakaianController extends Controller
         // $data = DataPemakaian::all();
 
         $data = DataPemakaian::join('data_barang', 'data_barang.kode_barang', '=', 'data_pemakaian.kode_barang')
-    ->select(
+        ->select(
         'data_pemakaian.id',
         'data_pemakaian.kode_barang',
         'data_pemakaian.jumlah_pakai',
@@ -28,8 +28,7 @@ class DataPemakaianController extends Controller
         'data_pemakaian.pemakai',
         'data_pemakaian.keterangan',
         'data_barang.nama_barang'  // Mengambil nama barang dari tabel data_barang
-    )
-    ->get();
+        )->paginate(5);
 
 
         return view('datapemakaian/datapemakaian',compact('data'),[

@@ -92,8 +92,8 @@
                                           <a class="button py-2 px-3 rounded text-decoration-none text-center dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             <i class="bi bi-person-fill-gear me-2 i-icon"></i>Option
                                           </a>
-                                          <ul class="dropdown-menu">
-                                            <li><a href="{{ route('datapembelianedit',['id' => $d->id]) }}" class="dropdown-item" href="#"><i class="bi bi-person-fill-gear me-2 i-icon"></i>Edit</a></li>
+                                          <ul class="dropdown-menu ">
+                                            <li><a href="{{ route('datapembelianedit',['id' => $d->id]) }}" class="dropdown-item" href="#"><i class="bi bi-pencil me-2 i-icon"></i>Edit</a></li>
                                             <li>
                                               <form id="hapus-datapembelian-{{ $d->id }}" action="{{ route('datapembelianhapus', $d->id) }}" method="POST">
                                                 <button type="button" id="btnHapusdatapembelian{{ $d->id }}" class="dropdown-item text-danger">
@@ -131,9 +131,9 @@
                                 </tr>
                                 </tr>
                                 @endforeach
-                    
                             </tbody>
                         </table>
+                        {{ $data->links() }}
                     </div>
                 </div>
             </div>

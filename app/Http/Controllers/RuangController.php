@@ -13,7 +13,7 @@ class RuangController extends Controller
 {
     public function index(Request $request)
     {
-        $data = Ruang::all();
+        $data = Ruang::paginate(5);
         return view('ruang/ruang',compact('data'),[
         ]);
     }

@@ -14,14 +14,14 @@
             @if (auth()->user()->hasRole('Administrator'))
             <a  class="m-3 btn btn-primary" style="height: 30px" href="{{route ('datapemakaianexport')}}">Download Excel</a>
             @endif
-            <a href="{{route ('datapemakaianadd')}}" class="py-1 px-3 text-center align-items-center d-flex rounded text-decoration-none button ms-auto"><i class="fa-solid fa-user-plus me-2"></i>Tambah Data Pemakaian</a>
+            <a href="{{route ('datapemakaianadd')}}" class="py-1 px-3 text-center align-items-center d-flex rounded text-decoration-none button ms-auto"><i class="fa-solid fa-plus-circle me-2"></i>Tambah Data Pemakaian</a>
           </div>  
           <main class="content px-3 py-2">
             <div class="container-fluid">
                 <!-- Table Element -->
                 <div class="card border-0">
                     <div class="card-body">
-                        <table class="table table-centered text-center">
+                        <table id="table-pemakaian" class="table table-centered text-center">
                             <thead>
                                 <tr>
                                     <th scope="col">
@@ -87,7 +87,7 @@
                                             <i class="bi bi-person-fill-gear me-2 i-icon"></i>Option
                                           </a>
                                           <ul class="dropdown-menu">
-                                            <li><a href="{{ route('datapemakaianedit',['id' => $d->id]) }}" class="dropdown-item" href="#"><i class="bi bi-person-fill-gear me-2 i-icon"></i>Edit</a></li>
+                                            <li><a href="{{ route('datapemakaianedit',['id' => $d->id]) }}" class="dropdown-item" href="#"><i class="bi bi-pencil me-2 i-icon"></i>Edit</a></li>
                                             <li>
                                               <form id="hapus-datapemakaian-{{ $d->id }}" action="{{ route('datapemakaianhapus', $d->id) }}" method="POST">
                                                 <button type="button" id="btnHapusdatapemakaian{{ $d->id }}" class="dropdown-item text-danger">
@@ -127,9 +127,11 @@
                     
                             </tbody>
                         </table>
+                        {{ $data->links() }}
                     </div>
                 </div>
             </div>
         </main>
     </div>
 </div>
+

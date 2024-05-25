@@ -17,7 +17,7 @@ class InventarisController extends Controller
         ->Leftjoin('data_pemakaian','data_pemakaian.kode_barang','=','data_barang.kode_barang')
         ->Leftjoin('users','users.name','=','data_pemakaian.pemakai')
         ->leftJoin('ruang','nama_ruang','=','data_pemakaian.ruang')
-        ->select('data_barang.kode_barang','data_barang.jenis_barang','data_barang.jumlah',DB::raw("DATE_FORMAT(data_pembelian.created_at, '%Y-%m-%d') as tanggal_pembelian"),'data_pemakaian.tanggal_pemakaian as tanggal_pemakaian','users.name','ruang.nama_ruang')->get();
+        ->select('data_barang.kode_barang','data_barang.jenis_barang','data_barang.jumlah',DB::raw("DATE_FORMAT(data_pembelian.tanggal_pembelian, '%Y-%m-%d') as tanggal_pembelian"),'data_pemakaian.tanggal_pemakaian as tanggal_pemakaian','users.name','ruang.nama_ruang')->paginate(5);
         return view('inventaris/inventaris',compact('data'),[
         ]);
     }
