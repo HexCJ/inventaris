@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\DataBarang;
 use App\Models\DataPembelian;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ExportPembelian;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -134,6 +136,10 @@ class DataPembelianController extends Controller
         else{
             return redirect()->route('datapembelianedit')->with('fail', 'Data Pembelian gagal diedit');
         }
+    }
+
+    public function export(){
+        return Excel::download(new ExportPembelian, "datapembelian.xlsx");
     }
 
     public function destroy($id)

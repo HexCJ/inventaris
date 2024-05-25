@@ -1,65 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-{{-- <div class="relative overflow-x-auto shadow-md ml-60">
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-            <tr>
-                <th scope="col" class="px-6 py-3">
-                    No
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Nama Barang
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Merk/Type
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Jumlah
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Harga
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Total
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Aksi
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-
-            @foreach($data as $d)
-            <tr class="bg-white border-b">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    {{$loop->iteration}}
-                </th>
-                <td class="px-6 py-4">
-                    {{$d->nama_barang}}
-                </td>
-                <td class="px-6 py-4">
-                    {{$d->merk}}
-                </td>
-                <td class="px-6 py-4">
-                    {{$d->jumlah}}
-                </td>
-                <td class="px-6 py-4">
-                    {{$d->harga}}
-                </td>
-                <td class="px-6 py-4">
-                    {{$d->total}}
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
-                </td>
-            </tr>
-            @endforeach
-
-        </tbody>
-    </table>
-</div> --}}
-
 <div class="wrapper">
     <div class="sidebar">
         @include('partials.sidebar')
@@ -70,6 +11,9 @@
         </div>
         <div class="d-flex">
             <h3 class="m-3">Data Pembelian</h3>
+            @if (auth()->user()->hasRole('Administrator'))
+            <a  class="m-3 btn btn-primary" style="height: 30px" href="{{route ('datapembelianexport')}}">Download Excel</a>
+            @endif
             <a href="{{route ('datapembelianadd')}}" class="py-1 px-3 text-center align-items-center d-flex rounded text-decoration-none button ms-auto"><i class="fa fa-cart-plus me-2" aria-hidden="true"></i>Tambah Data Pembelian</a>
           </div> 
         <main class="content px-3 py-2">
@@ -153,7 +97,7 @@
                                             <li>
                                               <form id="hapus-datapembelian-{{ $d->id }}" action="{{ route('datapembelianhapus', $d->id) }}" method="POST">
                                                 <button type="button" id="btnHapusdatapembelian{{ $d->id }}" class="dropdown-item text-danger">
-                                                  <i class="bi bi-person-fill-dash me-2 i-icon"></i>Hapus
+                                                  <i class="bi bi-trash me-2 i-icon"></i>Hapus
                                                 </button>
                                                 @csrf
                                                 @method('DELETE')

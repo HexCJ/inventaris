@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\DataBarang;
 use App\Models\DataPemakaian;
+use App\Exports\ExportPemakaian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class DataPemakaianController extends Controller
@@ -102,10 +104,19 @@ class DataPemakaianController extends Controller
         }
     }
 
+    public function export(){
+        return Excel::download(new ExportPemakaian, "datapemakaian.xlsx");
+    }
+
     public function destroy($id)
     {
         //
         $data = DataPemakaian::findOrFail($id);
+        $jumlahpem = $data->jumlah_pakai;
+        $kodebar = $data->kode_barang;
+        $databar = DataBarang::where('kode_barang', $kodebar)->first();
+        $databar->jumlah += $jumlahpem;
+        $databar->save();
         $kode_barang = $data->id;
 
         if($data->delete()){

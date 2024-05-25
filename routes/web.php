@@ -47,13 +47,15 @@ Route::get('/useredit{id}', [UserController::class, 'edit'])->name('useredit');
 Route::put('/user/update{id}', [UserController::class, 'update'])->name('update_user');
 Route::delete('/user/hapus/{id}',[UserController::class, 'destroy'])->name('userhapus');
 
+// databarang
 Route::get('/databarang', [DataBarangController::class, 'databarang'])->name('databarang');
 Route::get('/databarangadd', [DataBarangController::class, 'create'])->name('databarangadd');
-Route::post('/databarang/add', [DataBarangController::class, 'store'])->name('tambah_databarang');
-Route::get('/databarangedit{id}', [DataBarangController::class, 'edit'])->name('databarangedit');
-Route::put('/databarang/update{id}', [DataBarangController::class, 'update'])->name('update_databarang');
+// Route::post('/databarang/add', [DataBarangController::class, 'store'])->name('tambah_databarang');
+// Route::get('/databarangedit{id}', [DataBarangController::class, 'edit'])->name('databarangedit');
+// Route::put('/databarang/update{id}', [DataBarangController::class, 'update'])->name('update_databarang');
 Route::delete('/databarang/hapus/{id}',[DataBarangController::class, 'destroy'])->name('databaranghapus');
 
+// data pemakaian
 Route::get('/datapemakaian', [DataPemakaianController::class, 'datapemakaian'])->name('datapemakaian');
 Route::get('/datapemakaianadd', [DataPemakaianController::class, 'create'])->name('datapemakaianadd');
 Route::post('/datapemakaian/add', [DataPemakaianController::class, 'store'])->name('tambah_datapemakaian');
@@ -71,6 +73,13 @@ Route::delete('/datapembelian/hapus/{id}',[DataPembelianController::class, 'dest
 
 
 Route::get('/inventaris', [InventarisController::class, 'inventaris'])->name('inventaris');
+
+
+//export
+Route::get('/user/exportexcel', [UserController::class, 'export'])->name('userexport');
+Route::get('/databarang/exportexcel', [DataBarangController::class, 'export'])->name('databarangexport');
+Route::get('/datapembelian/exportexcel', [DataPembelianController::class, 'export'])->name('datapembelianexport');
+Route::get('/datapemakaian/exportexcel', [DataPemakaianController::class, 'export'])->name('datapemakaianexport');
 
 
 

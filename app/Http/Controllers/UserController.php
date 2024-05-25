@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ExportUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
-
-
+// use Maatwebsite\Excel\Excel;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class UserController extends Controller
@@ -120,6 +121,10 @@ class UserController extends Controller
         else{
             return redirect()->route('user')->with('fail', 'Data Siswa gagal diedit');
         }
+    }
+
+    public function export(){
+        return Excel::download(new ExportUser, "user.xlsx");
     }
     
     public function destroy($id)

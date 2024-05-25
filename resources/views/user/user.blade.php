@@ -11,6 +11,9 @@
         </div>
         <div class="d-flex">
             <h3 class="m-3">Data User</h3>
+            @if (auth()->user()->hasRole('Administrator'))
+            <a  class="m-3 btn btn-primary" style="height: 30px" href="{{route ('userexport')}}">Download Excel</a>
+            @endif
             <a href="{{route ('useradd')}}" class="py-1 px-3 text-center align-items-center d-flex rounded text-decoration-none button ms-auto"><i class="fa-solid fa-user-plus me-2"></i>Tambah User</a>
           </div>        
           <main class="content px-3 py-2">
@@ -76,7 +79,7 @@
                                             <li>
                                               <form id="hapus-users-{{ $d->id }}" action="{{ route('userhapus', $d->id) }}" method="POST">
                                                 <button type="button" id="btnHapusUsers{{ $d->id }}" class="dropdown-item text-danger">
-                                                  <i class="bi bi-person-fill-dash me-2 i-icon"></i>Hapus
+                                                  <i class="bi bi-trash me-2 i-icon"></i>Hapus
                                                 </button>
                                                 @csrf
                                                 @method('DELETE')

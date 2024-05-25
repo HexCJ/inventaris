@@ -1,64 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-{{-- <div class="relative overflow-x-auto shadow-md ml-60">
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-            <tr>
-                <th scope="col" class="px-6 py-3">
-                    No
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Kode Barang
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Nama Barang
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Jenis Barang
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Jumlah
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Harga
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Aksi
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-
-            @foreach($data as $d)
-            <tr class="bg-white border-b">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    {{$loop->iteration}}
-                </th>
-                <td class="px-6 py-4">
-                    {{$d->kode_barang}}
-                </td>
-                <td class="px-6 py-4">
-                    {{$d->nama_barang}}
-                </td>
-                <td class="px-6 py-4">
-                    {{$d->jenis_barang}}
-                </td>
-                <td class="px-6 py-4">
-                    {{$d->jumlah}}
-                </td>
-                <td class="px-6 py-4">
-                    {{$d->harga}}
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
-                </td>
-            </tr>
-            @endforeach
-
-        </tbody>
-    </table>
-</div> --}}
 <div class="wrapper">
     <div class="sidebar">
         @include('partials.sidebar')
@@ -69,7 +11,10 @@
         </div>
         <div class="d-flex">
             <h3 class="m-3">Data Barang</h3>
-            <a href="{{route ('databarangadd')}}" class="py-1 px-3 text-center align-items-center d-flex rounded text-decoration-none button ms-auto"><i class="fa-solid fa-user-plus me-2"></i>Tambah Barang</a>
+            @if (auth()->user()->hasRole('Administrator'))
+            <a  class="m-3 btn btn-primary" style="height: 30px" href="{{route ('databarangexport')}}">Download Excel</a>
+            @endif
+            {{-- <a href="{{route ('databarangadd')}}" class="py-1 px-3 text-center align-items-center d-flex rounded text-decoration-none button ms-auto"><i class="fa-solid fa-user-plus me-2"></i>Tambah Barang</a> --}}
           </div>        
           <main class="content px-3 py-2">
             <div class="container-fluid">
@@ -124,8 +69,38 @@
                                     <td>
                                         {{$d->harga}}
                                     </td>
-                                    <td>
-                                        <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
+                                    <td class="d-flex justify-content-center align-items-center">
+                                            <li>
+                                              <form id="hapus-databarang-{{ $d->id }}" action="{{ route('databaranghapus', $d->id) }}" method="POST">
+                                                <button type="button" id="btnHapusdatabarang{{ $d->id }}" class="dropdown-item text-danger">
+                                                  <i class="bi bi-trash me-2 i-icon"></i>Hapus
+                                                </button>
+                                                @csrf
+                                                @method('DELETE')
+                                              </form>
+                                              <script>
+                                                document.addEventListener('DOMContentLoaded', function() {
+                                                    document.getElementById('btnHapusdatabarang{{ $d->id }}').addEventListener('click', function() {
+                                                        Swal.fire({
+                                                            title: 'Apakah Anda yakin menghapus {{ $d->name}} ?',
+                                                            text: "Data yang dihapus akan menghapus data pembelian dan data pemakaian dan tidak dapat dikembalikan!",
+                                                            icon: 'warning',
+                                                            background: '#272829',
+                                                            color: '#ffffff',
+                                                            showCancelButton: true,
+                                                            confirmButtonColor: '#d33',
+                                                            cancelButtonColor: '#FCDC2A',
+                                                            confirmButtonText: 'Ya, hapus!',
+                                                            cancelButtonText: 'Batal'
+                                                        }).then((result) => {
+                                                            if (result.isConfirmed) {
+                                                                document.getElementById('hapus-databarang-{{ $d->id }}').submit();
+                                                            }
+                                                        });
+                                                    });
+                                                });
+                                              </script>
+                                            </li>
                                     </td>
                                 </tr>
                                 @endforeach
