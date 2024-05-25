@@ -6,6 +6,7 @@ use App\Http\Controllers\DataPemakaianController;
 use App\Http\Controllers\DataPembelianController;
 use App\Http\Controllers\InventarisController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RuangController;
 use App\Http\Controllers\UserController;
 use App\Models\DataBarang;
 use Illuminate\Support\Facades\Route;
@@ -71,15 +72,22 @@ Route::get('/datapembelianedit{id}', [DataPembelianController::class, 'edit'])->
 Route::put('/datapembelian/update{id}', [DataPembelianController::class, 'update'])->name('update_datapembelian');
 Route::delete('/datapembelian/hapus/{id}',[DataPembelianController::class, 'destroy'])->name('datapembelianhapus');
 
-
+// inventaris
 Route::get('/inventaris', [InventarisController::class, 'inventaris'])->name('inventaris');
 
+// data pemakaian
+Route::get('/ruang', [RuangController::class, 'index'])->name('ruang');
+Route::post('/ruang/add', [RuangController::class, 'store'])->name('tambah_ruang');
+Route::put('/ruang/update{id}', [RuangController::class, 'update'])->name('update_ruang');
+Route::delete('/ruang/hapus/{id}',[RuangController::class, 'destroy'])->name('ruanghapus');
 
 //export
 Route::get('/user/exportexcel', [UserController::class, 'export'])->name('userexport');
 Route::get('/databarang/exportexcel', [DataBarangController::class, 'export'])->name('databarangexport');
 Route::get('/datapembelian/exportexcel', [DataPembelianController::class, 'export'])->name('datapembelianexport');
 Route::get('/datapemakaian/exportexcel', [DataPemakaianController::class, 'export'])->name('datapemakaianexport');
+Route::get('/ruang/exportexcel', [RuangController::class, 'export'])->name('ruangexport');
+Route::get('/inventaris/exportexcel', [InventarisController::class, 'export'])->name('inventarisexport');
 
 
 

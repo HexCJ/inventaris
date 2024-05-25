@@ -44,16 +44,36 @@
                         <input type="date" class="form-control" id="tanggal_pemakaian" name="tanggal_pemakaian" value="{{$data->tanggal_pemakaian}}" required>
                     </div>
                     <div class="mb-3 col-md-6">
-                        <label for="pemakaian" class="form-label">Pemakaian</label>
-                        <input type="text" class="form-control" id="pemakaian" name="pemakaian" value="{{$data->pemakaian}}" required>
+                        <label for="pemakai" class="form-label">Pemakaian</label>
+                        {{-- <input type="text" class="form-control" id="pemakai" name="pemakai" value="{{$data->pemakai}}" required> --}}
+                        <select class="form-select form-select-sm py-2 mb-2 text-secondary" aria-label="Small select example" id="pemakai" name="pemakai" >
+                            <option selected disabled>Pilih Nama Pemakai</option>
+                            @foreach($users as $user)
+                                {{-- <option value="{{ $user->name }}">{{ $user->name }}</option> --}}
+                                <option value="{{ $user->name }}"{{ $user->name == $data->pemakai ? 'selected' : '' }}>{{ $user->name }}</option>
+                            @endforeach
+                          </select>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label for="keterangan" class="form-label">Keterangan</label>
-                    <input type="text" class="form-control" id="keterangan" name="keterangan" value="{{$data->keterangan}}" required>
-                    {{-- @error('jumlah')
-                    <small class="text-danger">{{ $message }}</small>
-                  @enderror --}}
+                <div class="row">
+                    <div class="mb-3 col-md-6">
+                        <label for="keterangan" class="form-label">Keterangan</label>
+                        <input type="text" class="form-control" id="keterangan" name="keterangan" value="{{$data->keterangan}}" required>
+                        {{-- @error('jumlah')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror --}}
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <label for="ruang" class="form-label">Ruang</label>
+                        <select class="form-select form-select-sm py-2 mb-2 text-secondary" aria-label="Small select example" id="ruang" name="ruang" >
+                            <option selected disabled>Pilih Nama Pemakai</option>
+                            @foreach($ruangs as $ruang)
+                                <option value="{{ $ruang->nama_ruang }}"{{ $ruang->nama_ruang == $data->ruang ? 'selected' : '' }}>{{ $ruang->nama_ruang }}</option>
+                            @endforeach
+                          </select>                        {{-- @error('jumlah')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror --}}
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

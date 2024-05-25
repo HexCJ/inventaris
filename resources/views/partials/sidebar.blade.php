@@ -27,6 +27,12 @@
                     Data Barang
                 </a>
             </li>
+            <li class="sidebar-item">
+                <a href="{{ route('ruang') }}" class="sidebar-link">
+                    <i class="fa fa-archive pe-2" aria-hidden="true"></i>
+                    Data Ruang
+                </a>
+            </li>
             @endif
             @if (auth()->user()->hasRole('Administrator') || auth()->user()->hasRole('Operator') || auth()->user()->hasRole('Petugas') ) 
             <li class="sidebar-item">

@@ -21,7 +21,7 @@
                 <!-- Table Element -->
                 <div class="card border-0">
                     <div class="card-body">
-                        <table class="table">
+                        <table class="table table-centered text-center">
                             <thead>
                                 <tr>
                                     <th scope="col">

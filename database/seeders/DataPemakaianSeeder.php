@@ -19,8 +19,9 @@ class DataPemakaianSeeder extends Seeder
             // 'nama_barang' => 'Mesin Bor',
             'kode_barang' => 'K001',
             'jumlah_pakai' => '2',
+            'ruang' => 'Gedung B',
             'tanggal_pemakaian' => Carbon::create(2024, 3, 20),
-            'pemakaian' => 'membor tembok',
+            'pemakai' => 'Administrator',
             'keterangan' => 'digunakan',
 
         ]);
@@ -28,8 +29,9 @@ class DataPemakaianSeeder extends Seeder
             // 'nama_barang' => 'Mesin Las',
             'kode_barang' => 'K002',
             'jumlah_pakai' => '2',
+            'ruang' => 'Gedung A',
             'tanggal_pemakaian' => Carbon::create(2024, 3, 20),
-            'pemakaian' => 'mengelas besi',
+            'pemakai' => 'Operator',
             'keterangan' => 'tersisah',
 
         ]);

@@ -103,7 +103,7 @@ class DataPembelianController extends Controller
         $data = DataPembelian::find($id);
         $jumlahLama = $data->jumlah;
         $data->nama_barang       = $request->nama_barang;
-        $data->kode_barang       = $request->kode_barang;
+        $data->kode_barang       = $data->kode_barang;
         $data->jenis_barang      = $request->jenis_barang;
         $data->merk              = $request->merk;
         $data->jumlah            = $request->jumlah;
@@ -113,7 +113,7 @@ class DataPembelianController extends Controller
 
         if($data->save()){
 
-            $databarang = DataBarang::where('kode_barang', $request->kode_barang)->first();
+            $databarang = DataBarang::where('kode_barang', $data->kode_barang)->first();
             if ($databarang) {
 
                 // if($databarang->jumlah >= $data->jumlah){

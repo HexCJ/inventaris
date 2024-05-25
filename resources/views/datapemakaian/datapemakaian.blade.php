@@ -21,7 +21,7 @@
                 <!-- Table Element -->
                 <div class="card border-0">
                     <div class="card-body">
-                        <table class="table">
+                        <table class="table table-centered text-center">
                             <thead>
                                 <tr>
                                     <th scope="col">
@@ -40,7 +40,10 @@
                                         Tanggal Pakai
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Pemakaian
+                                        Pemakai
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Ruang
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         Keterangan
@@ -61,7 +64,7 @@
                                         {{$d->kode_barang}}
                                     </td>
                                     <td>
-                                        {{$d->kode_barang}}
+                                        {{$d->nama_barang}}
                                     </td>
                                     <td>
                                         {{$d->jumlah_pakai}}
@@ -70,7 +73,10 @@
                                         {{$d->tanggal_pemakaian}}
                                     </td>
                                     <td>
-                                        {{$d->pemakaian}}
+                                        {{$d->pemakai}}
+                                    </td>
+                                    <td>
+                                        {{$d->ruang}}
                                     </td>
                                     <td>
                                         {{$d->keterangan}}

@@ -14,8 +14,9 @@ class DataPemakaian extends Model
     protected $fillable = [
         'kode_barang',
         'jumlah_pakai',
+        'ruang',
         'tanggal_pemakaian',
-        'pemakaian',
+        'pemakai',
         'keterangan',
     ];
     

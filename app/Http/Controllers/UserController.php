@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\ExportUser;
+use App\Models\DataPemakaian;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -92,6 +93,7 @@ class UserController extends Controller
             return redirect()->back()->withInput()->withErrors($validator);
         }
         $data = User::find($id);
+        $datapemakaian = DataPemakaian::where('pemakai', $data->name)->first();
         $data->name = $request->nama;
         $data->username = $request->username;
         $data->jenis_kelamin = $request->jenis_kelamin;
@@ -101,7 +103,12 @@ class UserController extends Controller
             $data->password = Hash::make($request->password);
         }
 
+
         if($data->save()){
+            if($datapemakaian){
+                $datapemakaian->pemakai = $data->name; 
+                $datapemakaian->save();
+            }
 
             if($data->role === 'Administrator')
             { 
