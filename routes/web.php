@@ -41,45 +41,45 @@ Route::middleware('auth')->group(function () {
 });
 
 // user
-Route::get('/user', [UserController::class, 'viewuser'])->name('user');
-Route::get('/useradd', [UserController::class, 'create'])->name('useradd');
-Route::post('/user/add', [UserController::class, 'store'])->name('tambah_user');
-Route::get('/useredit{id}', [UserController::class, 'edit'])->name('useredit');
-Route::put('/user/update{id}', [UserController::class, 'update'])->name('update_user');
-Route::delete('/user/hapus/{id}',[UserController::class, 'destroy'])->name('userhapus');
+Route::get('/user', [UserController::class, 'viewuser'])->middleware(['auth', 'verified', 'role:Administrator'])->name('user');
+Route::get('/useradd', [UserController::class, 'create'])->middleware(['auth', 'verified', 'role:Administrator'])->name('useradd');
+Route::post('/user/add', [UserController::class, 'store'])->middleware(['auth', 'verified', 'role:Administrator'])->name('tambah_user');
+Route::get('/useredit{id}', [UserController::class, 'edit'])->middleware(['auth', 'verified', 'role:Administrator'])->name('useredit');
+Route::put('/user/update{id}', [UserController::class, 'update'])->middleware(['auth', 'verified', 'role:Administrator'])->name('update_user');
+Route::delete('/user/hapus/{id}',[UserController::class, 'destroy'])->middleware(['auth', 'verified', 'role:Administrator'])->name('userhapus');
 
 // databarang
-Route::get('/databarang', [DataBarangController::class, 'databarang'])->name('databarang');
-Route::get('/databarangadd', [DataBarangController::class, 'create'])->name('databarangadd');
+Route::get('/databarang', [DataBarangController::class, 'databarang'])->middleware(['auth', 'verified', 'role:Administrator'])->name('databarang');
+Route::get('/databarangadd', [DataBarangController::class, 'create'])->middleware(['auth', 'verified', 'role:Administrator'])->name('databarangadd');
 // Route::post('/databarang/add', [DataBarangController::class, 'store'])->name('tambah_databarang');
 // Route::get('/databarangedit{id}', [DataBarangController::class, 'edit'])->name('databarangedit');
 // Route::put('/databarang/update{id}', [DataBarangController::class, 'update'])->name('update_databarang');
-Route::delete('/databarang/hapus/{id}',[DataBarangController::class, 'destroy'])->name('databaranghapus');
+Route::delete('/databarang/hapus/{id}',[DataBarangController::class, 'destroy'])->middleware(['auth', 'verified', 'role:Administrator'])->name('databaranghapus');
 
 // data pemakaian
-Route::get('/datapemakaian', [DataPemakaianController::class, 'datapemakaian'])->name('datapemakaian');
-Route::get('/datapemakaianadd', [DataPemakaianController::class, 'create'])->name('datapemakaianadd');
-Route::post('/datapemakaian/add', [DataPemakaianController::class, 'store'])->name('tambah_datapemakaian');
-Route::get('/datapemakaianedit{id}', [DataPemakaianController::class, 'edit'])->name('datapemakaianedit');
-Route::put('/datapemakaian/update{id}', [DataPemakaianController::class, 'update'])->name('update_datapemakaian');
-Route::delete('/datapemakaian/hapus/{id}',[DataPemakaianController::class, 'destroy'])->name('datapemakaianhapus');
+Route::get('/datapemakaian', [DataPemakaianController::class, 'datapemakaian'])->middleware(['auth', 'verified', 'role:Administrator|Operator'])->name('datapemakaian');
+Route::get('/datapemakaianadd', [DataPemakaianController::class, 'create'])->middleware(['auth', 'verified', 'role:Administrator|Operator'])->name('datapemakaianadd');
+Route::post('/datapemakaian/add', [DataPemakaianController::class, 'store'])->middleware(['auth', 'verified', 'role:Administrator|Operator'])->name('tambah_datapemakaian');
+Route::get('/datapemakaianedit{id}', [DataPemakaianController::class, 'edit'])->middleware(['auth', 'verified', 'role:Administrator|Operator'])->name('datapemakaianedit');
+Route::put('/datapemakaian/update{id}', [DataPemakaianController::class, 'update'])->middleware(['auth', 'verified', 'role:Administrator|Operator'])->name('update_datapemakaian');
+Route::delete('/datapemakaian/hapus/{id}',[DataPemakaianController::class, 'destroy'])->middleware(['auth', 'verified', 'role:Administrator|Operator'])->name('datapemakaianhapus');
 
 // data pembelian
-Route::get('/datapembelian', [DataPembelianController::class, 'datapembelian'])->name('datapembelian');
-Route::get('/datapembelianadd', [DataPembelianController::class, 'create'])->name('datapembelianadd');
-Route::post('/datapembelian/add', [DataPembelianController::class, 'store'])->name('tambah_datapembelian');
-Route::get('/datapembelianedit{id}', [DataPembelianController::class, 'edit'])->name('datapembelianedit');
-Route::put('/datapembelian/update{id}', [DataPembelianController::class, 'update'])->name('update_datapembelian');
-Route::delete('/datapembelian/hapus/{id}',[DataPembelianController::class, 'destroy'])->name('datapembelianhapus');
+Route::get('/datapembelian', [DataPembelianController::class, 'datapembelian'])->middleware(['auth', 'verified', 'role:Administrator|Operator|Petugas'])->name('datapembelian');
+Route::get('/datapembelianadd', [DataPembelianController::class, 'create'])->middleware(['auth', 'verified', 'role:Administrator|Operator|Petugas'])->name('datapembelianadd');
+Route::post('/datapembelian/add', [DataPembelianController::class, 'store'])->middleware(['auth', 'verified', 'role:Administrator|Operator|Petugas'])->name('tambah_datapembelian');
+Route::get('/datapembelianedit{id}', [DataPembelianController::class, 'edit'])->middleware(['auth', 'verified', 'role:Administrator|Operator|Petugas'])->name('datapembelianedit');
+Route::put('/datapembelian/update{id}', [DataPembelianController::class, 'update'])->middleware(['auth', 'verified', 'role:Administrator|Operator|Petugas'])->name('update_datapembelian');
+Route::delete('/datapembelian/hapus/{id}',[DataPembelianController::class, 'destroy'])->middleware(['auth', 'verified', 'role:Administrator|Operator|Petugas'])->name('datapembelianhapus');
 
 // inventaris
 Route::get('/inventaris', [InventarisController::class, 'inventaris'])->name('inventaris');
 
 // data pemakaian
-Route::get('/ruang', [RuangController::class, 'index'])->name('ruang');
-Route::post('/ruang/add', [RuangController::class, 'store'])->name('tambah_ruang');
-Route::put('/ruang/update{id}', [RuangController::class, 'update'])->name('update_ruang');
-Route::delete('/ruang/hapus/{id}',[RuangController::class, 'destroy'])->name('ruanghapus');
+Route::get('/ruang', [RuangController::class, 'index'])->middleware(['auth', 'verified', 'role:Administrator'])->name('ruang');
+Route::post('/ruang/add', [RuangController::class, 'store'])->middleware(['auth', 'verified', 'role:Administrator'])->name('tambah_ruang');
+Route::put('/ruang/update{id}', [RuangController::class, 'update'])->middleware(['auth', 'verified', 'role:Administrator'])->name('update_ruang');
+Route::delete('/ruang/hapus/{id}',[RuangController::class, 'destroy'])->middleware(['auth', 'verified', 'role:Administrator'])->name('ruanghapus');
 
 //export
 Route::get('/user/exportexcel', [UserController::class, 'export'])->name('userexport');

@@ -199,3 +199,12 @@ html[data-bs-theme="dark"] .theme-toggle .fa-moon {
 html[data-bs-theme="light"] .theme-toggle .fa-sun {
     display: none;
 }
+
+
+#sidebar {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0; /* Jarak dari atas viewport */
+    height: 100vh; /* Tinggi penuh viewport */
+    overflow-y: auto; /* Scroll jika konten melebihi tinggi viewport */
+}

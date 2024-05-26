@@ -109,20 +109,20 @@ class UserController extends Controller
                 $datapemakaian->pemakai = $data->name; 
                 $datapemakaian->save();
             }
-
             if($data->role === 'Administrator')
             { 
                 $data->syncRoles('Administrator');
-                return redirect()->route('user')->with('success-update', 'Data Siswa berhasil diedit');
+                return redirect()->route('user')->with('success-update', 'Data User berhasil diedit');
             }
             else if ($data->role === 'Operator'){
-                $data->syncRoles('Administrator');
-                return redirect()->route('user')->with('success-update', 'Data Guru berhasil diedit');            
+                $data->syncRoles('Operator');
+                return redirect()->route('user')->with('success-update', 'Data User berhasil diedit');            
             }
             else if ($data->role === 'Petugas'){
-                $data->syncRoles('Administrator');
-                return redirect()->route('users')->with('success-update', 'Data Admin berhasil diedit');        
+                $data->syncRoles('Petugas');
+                return redirect()->route('user')->with('success-update', 'Data User berhasil diedit');        
             }
+
         }
 
         else{
@@ -138,12 +138,12 @@ class UserController extends Controller
     {
         //
         $data = user::findOrFail($id);
-        $namasiswa = $data->id;
+        $namauser = $data->name;
 
         if($data->delete()){
-            return redirect()->back()->with('success-delete', 'Data Siswa '.$namasiswa.' berhasil dihapus');
+            return redirect()->back()->with('success-delete', 'Data User '.$namauser.' berhasil dihapus');
         }else{
-            return redirect()->back()->with('fail', 'Data Siswa gagal '.$namasiswa.' dihapus');
+            return redirect()->back()->with('fail', 'Data User gagal '.$namauser.' dihapus');
         }
     }
 }

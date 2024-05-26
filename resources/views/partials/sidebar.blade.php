@@ -50,39 +50,38 @@
                 </a>
             </li>
             @endif
-            @if (auth()->user()->hasRole('Administrator'))
+            {{-- @if (auth()->user()->hasRole('Administrator'))
             <li class="sidebar-item">
                 <a href="{{ route('inventaris') }}" class="sidebar-link">
                     <i class="fa-solid fa-list pe-2"></i>
                     Data Inventaris
                 </a>
             </li>
-            @endif
+            @endif --}}
 
-            {{-- hapus nanti --}}
-            <li class="sidebar-header">
+            {{-- <li class="sidebar-header">
                 Multi Level Menu
             </li>
             <li class="sidebar-item">
-                <a href="#" class="sidebar-link collapsed" data-bs-target="#multi" data-bs-toggle="collapse"
+                <a href="{{ route('datapembelian') }}" class="sidebar-link">
                     aria-expanded="false"><i class="fa-solid fa-share-nodes pe-2"></i>
                     Multi Dropdown
                 </a>
                 <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-target="#level-1"
+                    <i class="fa fa-list-alt pe-2" aria-hidden="true"></i>
                             data-bs-toggle="collapse" aria-expanded="false">Level 1</a>
                         <ul id="level-1" class="sidebar-dropdown list-unstyled collapse">
                             <li class="sidebar-item">
                                 <a href="#" class="sidebar-link">Level 1.1</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Level 1.2</a>
+                                <a href="{{ route('ruang') }}" class="sidebar-link">
                             </li>
                         </ul>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
         </ul>
     </div>
 </aside>
