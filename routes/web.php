@@ -5,6 +5,7 @@ use App\Http\Controllers\DataBarangController;
 use App\Http\Controllers\DataPemakaianController;
 use App\Http\Controllers\DataPembelianController;
 use App\Http\Controllers\InventarisController;
+use App\Http\Controllers\PemakaianTanggal;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RuangController;
 use App\Http\Controllers\UserController;
@@ -89,6 +90,10 @@ Route::get('/datapemakaian/exportexcel', [DataPemakaianController::class, 'expor
 Route::get('/ruang/exportexcel', [RuangController::class, 'export'])->name('ruangexport');
 Route::get('/multi/exportexcel', [Controller::class, 'export'])->name('multiexport');
 Route::get('/inventaris/exportexcel', [InventarisController::class, 'export'])->name('inventarisexport');
+
+
+
+Route::get('/pemakaiantanggal/exportexcel', [PemakaianTanggal::class, 'exportt'])->name('pemakaiantanggalsexport');
 
 
 

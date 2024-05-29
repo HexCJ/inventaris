@@ -11,6 +11,15 @@
         </div>
         <div class="d-flex">
             <h3 class="m-3">Data Pemakaian</h3>
+            <form action="{{ route('pemakaiantanggalsexport') }}" method="GET">
+                {{--  --}}
+                <div class="form-group">
+                    <label for="tanggal">Pilih Tanggal:</label>
+                    <input type="date" id="tanggal" name="tanggal" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Export</button>
+            </form>
+            {{--  --}}
             @if (auth()->user()->hasRole('Administrator'))
             <a  class="m-3 btn btn-primary" style="height: 30px" href="{{route ('datapemakaianexport')}}">Download Excel</a>
             @endif

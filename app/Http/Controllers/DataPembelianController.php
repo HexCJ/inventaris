@@ -149,9 +149,15 @@ class DataPembelianController extends Controller
         $jumlahpem = $data->jumlah;
         $kodebar = $data->kode_barang;
         $databar = DataBarang::where('kode_barang', $kodebar)->first();
-        $databar->jumlah -= $jumlahpem;
-        $databar->save();
-        $nama_barang = $data->nama_barang;
+        // if($databar){
+
+        //     $databar->jumlah -= $jumlahpem;
+        //     $databar->save();
+        // }
+        // else{
+            $databar->delete();
+            // }
+            $nama_barang = $data->nama_barang;
 
         if($data->delete()){
             return redirect()->back()->with('success-delete', 'Data Pembelian '.$nama_barang.' berhasil dihapus');
